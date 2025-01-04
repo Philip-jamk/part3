@@ -9,5 +9,5 @@
 ### Create new contact POST http://localhost:3001/api/persons Content-Type: application/json
 
 {
-"name": "Bob Ross", "number": "09034735232"
+"name": "Philip", "number": "09039735232"
 }
