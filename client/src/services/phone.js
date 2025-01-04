@@ -1,6 +1,6 @@
 import axios from "axios";
-const baseUrl = "https://part3-ukyk.onrender.com/api/persons";
-
+const baseUrl = "https://part-3-lizu.onrender.com/api/persons";
+https://part-3-lizu.onrender.com/
 const getAll = () => {
   const request = axios.get(baseUrl);
   return request.then((response) => response.data);
