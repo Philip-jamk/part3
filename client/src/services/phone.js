@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseUrl = "https://part3-phonebook-backend-2.onrender.com/api/persons";
+const baseUrl = "https://part3-ukyk.onrender.com/api/persons";
 
 const getAll = () => {
   const request = axios.get(baseUrl);
