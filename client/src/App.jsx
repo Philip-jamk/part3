@@ -16,21 +16,6 @@ const App = () => {
     type: "normal",
   });
 
-  /*const [persons, setPerson] = useState([
-    { name: "Arto Hellas", number: "040-123456", id: 1 },
-    { name: "Ada Lovelace", number: "39-44-5323523", id: 2 },
-    { name: "Dan Abramov", number: "12-43-234345", id: 3 },
-    { name: "Mary Poppendieck", number: "39-23-6423122", id: 4 },
-  ]);*/
-  /*const hook = () => {
-    console.log("effect");
-    axios.get("http://localhost:3001/persons").then((response) => {
-      console.log("promise fulfilled");
-      setPerson(response.data);
-    });
-  };
-  useEffect(hook, []);*/
-
   useEffect(() => {
     PhoneService.getAll().then((initialPhone) => {
       setPerson(initialPhone);
@@ -39,6 +24,7 @@ const App = () => {
   }, []);
 
   //Adding records or updating records
+  //starting
   const addName = (event) => {
     event.preventDefault();
     let namephone;
@@ -83,8 +69,10 @@ const App = () => {
         })
         .catch((error) => {
           /* Adding a sucessful Message after submission*/
+          console.log(error.response.data.error);
           setErrorMessage({
-            content: `Contact ${nameObject.name} could not be added to the Database. Reason: ${error}`,
+            //content: `Contact ${nameObject.name} could not be added to the Database. Reason: ${error}`,
+            content: `${error.response.data.error}`,
             type: "error",
           });
           setTimeout(() => {
@@ -108,6 +96,10 @@ const App = () => {
       ) {
         const person = persons.find((n) => n.id === changeid);
         const changedNote = { ...person, name: newName, number: newPhone };
+
+        // This calls the a function that changes the url to put request
+        // updatePhoneNumber(changeid, label, namephone);
+
         PhoneService.update(changeid, changedNote)
           .then((returnedContact) => {
             /* Adding a sucessful Message after submission*/
@@ -126,7 +118,6 @@ const App = () => {
             );
           })
           .catch((error) => {
-            //alert(`the note '${namephone}' was already deleted from server`);
             // Adding a sucessful Message after submission
             setErrorMessage({
               content: `Contact ${namephone} could not be updated to the Database. Reason: ${error}`,
@@ -141,6 +132,7 @@ const App = () => {
       }
     }
   };
+  //Ending
 
   const handleNameChange = (event) => {
     setNewNames(event.target.value);
